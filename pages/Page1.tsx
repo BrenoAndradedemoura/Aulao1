@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, Image } from 'react-native'
+import { View, StyleSheet, Image, TouchableOpacity, Alert, Text} from 'react-native'
 import { Ipage } from '../App'
-import logo from './assets/logo.png'
-import Toggle from './Toggle'
+import logo from '../assets/logo.png'
+import Toggle from '../components/Toggle'
 
 export default function Page1({ setPageI }: Ipage) {
   const [flexDirection, setFlexDirection] = useState('row')
@@ -10,10 +10,10 @@ export default function Page1({ setPageI }: Ipage) {
   const [alignItems, setAlignItems] = useState('center')
   const layoutStyle = { flexDirection, justifyContent, alignItems }
 
-  const primaryAxis = flexDirection === 'row' ? 'Horizontal' : 'Vertical'
-  const secondaryAxis = flexDirection === 'row' ? 'Vertical' : 'Horizontal'
+const primaryAxis = flexDirection === 'row' ? 'Horizontal' : 'Vertical'
+const secondaryAxis = flexDirection === 'row' ? 'Vertical' : 'Horizontal'
 
-  return (
+return (
     <View style={styles.container}>
       <Toggle
         label={'Primary axis (flexDirection)'}
@@ -39,13 +39,19 @@ export default function Page1({ setPageI }: Ipage) {
           setAlignItems(option)
         }}
       />
-      <Image source={logo} />
+      <Text>Olá</Text>
+      <TouchableOpacity style={styles.button} onPress={() => {
+        setPageI(2)
+      }}>
+        <Text>Página 2</Text>
+    </TouchableOpacity>
+      <Image source={logo} style={styles.img} />
       <View style={[styles.layout, layoutStyle]}>
         <View style={styles.box} />
         <View style={styles.box} />
         <View style={styles.box} />
       </View>
-    </View>
+    </View >
   )
 }
 
@@ -63,13 +69,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  button: {
+    backgroundColor: 'red',
+    borderRadius: 5,
+    width: 100,
+    alignItems: 'center',
+    padding: 5,
+    margin: 5,
+  },
   layout: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.05)',
   },
   box: {
     padding: 25,
-    backgroundColor: '#3B6CD4',
+    backgroundColor: '#6d0000',
     margin: 5,
   },
+  img: {
+    width: 50,
+    height: 50
+  }
 })

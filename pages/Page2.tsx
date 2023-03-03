@@ -13,30 +13,31 @@ const items = [
 export default function Page2({ setPageI }: Ipage) {
   return (
     <>
-     <FlatList
-       style={styles.container}
-       data={items}
-       renderItem={({ item }) => <Text style={styles.row}>{item.text}</Text>}
-       keyExtractor={(item) => item.id}
-    />
-    <TouchableOpacity style={styles.button} onPress={() => {
+        <FlatList
+          style={styles.container}
+          data={items}
+          renderItem={({ item }) => <Text style={styles.row}>{item.text}</Text>}
+          keyExtractor={(item) => item.id}
+
+      />
+    <TouchableOpacity onPress={() => {
         setPageI(1)
       }}> 
-        <text>Pag 1</text>
+        <Text style={styles.button}>Página 1 1</Text>
         </TouchableOpacity>
      </> 
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  row: {
-    padding: 15,
-    marginBottom: 5,
-    backgroundColor: 'skyblue',
-  },
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    row: {
+      padding: 15,
+      marginBottom: 5,
+      backgroundColor: 'skyblue',
+    },
   button: {
     backgroundColor: 'red',
     borderRadius: 5,
@@ -44,5 +45,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 5,
     margin: 5,
-  }
+  },
 })
